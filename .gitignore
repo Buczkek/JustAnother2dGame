@@ -1,3 +1,6 @@
 # Editor stuff
 /venv
 /.idea
+
+#config file
+config.cfg

@@ -1,3 +1,3 @@
 import pygame
-import config
-CONFIG = config.Config()
+import Config
+CONFIG = Config.Config()

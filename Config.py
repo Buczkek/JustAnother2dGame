@@ -1,10 +1,10 @@
 import sys, time
 
 OPTIONS = {
-    "": "",
+    "resolution": "800x600",
 }
 
-
+dict
 class Config:  # TODO check for bugs
     def __init__(self, path="config.cfg"):
         self._path = path
@@ -30,13 +30,15 @@ class Config:  # TODO check for bugs
     def config_creator(self):
         try:
             with open(self._path, 'w') as file:
-                for (option, setting) in OPTIONS:
+                for option in OPTIONS:
+                    setting = OPTIONS[option]
                     file.write(f"{option}={setting}\n")
         except:
             pass
 
     def load_default(self):
-        for (option, setting) in OPTIONS:
+        for option in OPTIONS:
+            setting = OPTIONS[option]
             self._settings[option] = setting
 
     def config_import(self):
@@ -55,7 +57,8 @@ class Config:  # TODO check for bugs
             path = self._path
         try:
             with open(path, 'w') as config_file:
-                for (option, setting) in self._settings:
+                for option in self._settings:
+                    setting = self._settings
                     config_file.write(f"{option}={setting}\n")
         except:
             pass
@@ -64,6 +67,10 @@ class Config:  # TODO check for bugs
         return self._settings[setting]
 
     def fill_settings(self):
-        for (option, setting) in OPTIONS:
+        for option in OPTIONS:
+            setting = OPTIONS[option]
             if option not in self._settings:
                 self._settings[option] = setting
+
+    def __getitem__(self, item):
+        return self._settings[item]
